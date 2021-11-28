@@ -12,7 +12,10 @@ import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
+import java.util.UUID;
+
 public class TaskFragment extends Fragment {
+    private static String ARG_TASK_ID;
     private Task task;
     private Button dateButton;
     private EditText nameField;
@@ -21,7 +24,16 @@ public class TaskFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        task = new Task();
+        UUID taskId = (UUID) getArguments().getSerializable(ARG_TASK_ID);
+        task = TaskStorage.getInstance().getSingleTask(taskId);
+    }
+
+    public static TaskFragment newInstance(UUID taskId) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(ARG_TASK_ID, taskId);
+        TaskFragment taskFragment = new TaskFragment();
+        taskFragment.setArguments(bundle);
+        return taskFragment;
     }
 
     @Override

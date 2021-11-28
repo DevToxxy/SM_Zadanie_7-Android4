@@ -1,4 +1,5 @@
 package pl.edu.pb.sm_zadanie_6_android3;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -13,7 +14,7 @@ public class Task {
     private Date date;
     private boolean done;
 
-    public Task(){
+    public Task() {
         id = UUID.randomUUID();
         date = new Date();
     }
