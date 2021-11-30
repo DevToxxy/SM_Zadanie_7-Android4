@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="20dp"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <TextView
         style="?android:listSeparatorTextViewStyle"
@@ -28,6 +27,7 @@
         android:id="@+id/task_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
     <CheckBox
         android:id="@+id/task_done"
         android:layout_width="match_parent"

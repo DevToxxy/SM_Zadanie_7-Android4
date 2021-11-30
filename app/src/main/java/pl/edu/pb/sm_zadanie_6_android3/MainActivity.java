@@ -1,8 +1,6 @@
 package pl.edu.pb.sm_zadanie_6_android3;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 

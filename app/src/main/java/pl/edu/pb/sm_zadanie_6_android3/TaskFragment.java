@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import java.util.UUID;
 
 public class TaskFragment extends Fragment {
-    private static String ARG_TASK_ID;
+    private static String ARG_TASK_ID = "task_id";
     private Task task;
     private Button dateButton;
     private EditText nameField;
@@ -24,7 +24,7 @@ public class TaskFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UUID taskId = (UUID)getArguments().getSerializable(ARG_TASK_ID);
+        UUID taskId = (UUID) getArguments().getSerializable(ARG_TASK_ID);
         task = TaskStorage.getInstance().getSingleTask(taskId);
     }
 
@@ -39,7 +39,11 @@ public class TaskFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_task, container, false);
+
         nameField = view.findViewById(R.id.task_name);
+        dateButton = view.findViewById(R.id.task_date);
+        doneCheckBox = view.findViewById(R.id.task_done);
+
         nameField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -59,6 +63,8 @@ public class TaskFragment extends Fragment {
 
         dateButton.setText(task.getDate().toString());
         dateButton.setEnabled(false);
+
+        nameField.setText(task.getName());
 
         doneCheckBox.setChecked(task.isDone());
         doneCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {

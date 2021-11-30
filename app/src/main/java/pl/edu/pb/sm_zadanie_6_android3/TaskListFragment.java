@@ -1,12 +1,10 @@
 package pl.edu.pb.sm_zadanie_6_android3;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 
 
@@ -19,19 +17,17 @@ import java.util.List;
 import lombok.NonNull;
 
 public class TaskListFragment extends Fragment {
-    public static final String KEY_EXTRA_TASK_ID = "" ;
-    private TextView nameTextView;
-    private TextView dateTextView;
+    public static final String KEY_EXTRA_TASK_ID = "extra_task_id";
 
-    public RecyclerView recyclerView;
-    //private Context getActivity;
+
+    private RecyclerView recyclerView;
+
     private TaskAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_task_list, container, false);
         recyclerView = view.findViewById(R.id.task_recycler_view);
-        //getActivity = recyclerView.getContext();
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         updateView();
         return view;
@@ -57,6 +53,8 @@ public class TaskListFragment extends Fragment {
 
     private class TaskHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private Task task;
+        private TextView nameTextView;
+        private TextView dateTextView;
 
         public TaskHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_task, parent, false));

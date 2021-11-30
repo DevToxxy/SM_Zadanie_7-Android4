@@ -1,6 +1,5 @@
 package pl.edu.pb.sm_zadanie_6_android3;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;

@@ -18,10 +18,4 @@ public class Task {
         id = UUID.randomUUID();
         date = new Date();
     }
-    public Task(String name, boolean done) { //do wyrzucenia
-        id = UUID.randomUUID();
-        date = new Date();
-        this.name = name;
-        this.done = done;
-    }
 }
