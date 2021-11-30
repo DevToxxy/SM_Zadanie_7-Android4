@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,20 +19,21 @@ import java.util.List;
 import lombok.NonNull;
 
 public class TaskListFragment extends Fragment {
-    public static final String KEY_EXTRA_TASK_ID = ;
+    public static final String KEY_EXTRA_TASK_ID = "" ;
     private TextView nameTextView;
     private TextView dateTextView;
 
-    private View recyclerView;
-    private Context getActivity;
+    public RecyclerView recyclerView;
+    //private Context getActivity;
     private TaskAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_task_list, container, false);
         recyclerView = view.findViewById(R.id.task_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity));
-        this.updateView();
+        //getActivity = recyclerView.getContext();
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        updateView();
         return view;
     }
 
