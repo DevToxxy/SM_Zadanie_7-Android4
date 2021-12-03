@@ -6,7 +6,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "pl.edu.pb.sm_zadanie_6_android3"
+        applicationId "pl.edu.pb.sm_zadanie_7_android4"
         minSdk 21
         targetSdk 31
         versionCode 1

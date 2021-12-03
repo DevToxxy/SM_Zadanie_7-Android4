@@ -1,4 +1,4 @@
-package pl.edu.pb.sm_zadanie_6_android3;
+package pl.edu.pb.sm_zadanie_7_android4;
 
 import java.util.Date;
 import java.util.UUID;

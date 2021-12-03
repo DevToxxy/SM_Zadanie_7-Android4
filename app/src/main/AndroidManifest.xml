@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="pl.edu.pb.sm_zadanie_6_android3">
+    package="pl.edu.pb.sm_zadanie_7_android4">
 
     <application
         android:allowBackup="true"
@@ -13,10 +13,10 @@
 <!--            android:name=".SingleFragmentActivity"-->
 <!--            android:exported="true" />-->
         <activity
-            android:name=".MainActivity"
+            android:name="pl.edu.pb.sm_zadanie_7_android4.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".TaskListActivity"
+            android:name="pl.edu.pb.sm_zadanie_7_android4.TaskListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
