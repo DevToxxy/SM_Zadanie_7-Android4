@@ -24,11 +24,13 @@ import lombok.NonNull;
 
 public class TaskListFragment extends Fragment {
     public static final String KEY_EXTRA_TASK_ID = "extra_task_id";
+    private static final String KEY_IS_SUBTITLE_VISIBLE = "is_subtitle_visible";
 
 
     private RecyclerView recyclerView;
 
     private TaskAdapter adapter;
+    private boolean subtitleVisible;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class TaskListFragment extends Fragment {
         } else {
             adapter.notifyDataSetChanged();
         }
+        updateSubtitle();
     }
 
     @Override
@@ -61,11 +64,26 @@ public class TaskListFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         super.onCreateOptionsMenu(menu,inflater);
         inflater.inflate(R.menu.fragment_task_menu,menu);
-    }
 
+        MenuItem subtitleItem = menu.findItem(R.id.show_subtitle);
+        if(subtitleVisible){
+            subtitleItem.setTitle(R.string.hide_subtitle);
+        }
+        else{
+            subtitleItem.setTitle(R.string.show_subtitle);
+        }
+    }
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(KEY_IS_SUBTITLE_VISIBLE,subtitleVisible);
+    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(savedInstanceState != null){
+            subtitleVisible = savedInstanceState.getBoolean(KEY_IS_SUBTITLE_VISIBLE);
+        }
         setHasOptionsMenu(true);
     }
     @Override
@@ -79,6 +97,8 @@ public class TaskListFragment extends Fragment {
                 startActivity(intent);
                 return true;
             case R.id.show_subtitle:
+                subtitleVisible = !subtitleVisible;
+                getActivity().invalidateOptionsMenu();
                 updateSubtitle();
                 return true;
             default:
@@ -96,6 +116,9 @@ public class TaskListFragment extends Fragment {
             }
         }
         String subtitle = getString(R.string.subtitle_format, todoTaskCount);
+        if(!subtitleVisible){
+            subtitle = null;
+        }
         AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
         appCompatActivity.getSupportActionBar().setSubtitle(subtitle);
     }
