@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">" SM_Zadanie_7-Android4"</string>
+    <string name="task_name_hint">Enter task name</string>
+    <string name="task_name_label">Task name</string>
+    <string name="task_details_label">Details</string>
+    <string name="task_done_label">Completed</string>
+    <string name="task_add_new">New task</string>
+    <string name="show_subtitle">Show subtitile</string>
+    <string name="hide_subtitle">Hide subtitile</string>
+    <string name="subtitle_format">%1$d tasks</string>
+</resources>

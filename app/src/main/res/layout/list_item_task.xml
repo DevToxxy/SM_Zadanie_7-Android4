@@ -28,6 +28,7 @@
             android:layout_weight="1"
             android:paddingBottom="@dimen/task_item_padding"
             android:textSize="@dimen/font_size"
+            android:textColor="@color/darkOrange"
             android:text="TextView" />
 
         <TextView
@@ -37,6 +38,7 @@
             android:layout_weight="1"
             android:paddingBottom="@dimen/whole_task_padding"
             android:textSize="@dimen/font_size"
+            android:textColor="@color/darkOrange"
             android:text="TextView" />
     </LinearLayout>
 
