@@ -3,11 +3,17 @@ package pl.edu.pb.sm_zadanie_7_android4;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -51,17 +57,62 @@ public class TaskListFragment extends Fragment {
         updateView();
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+        super.onCreateOptionsMenu(menu,inflater);
+        inflater.inflate(R.menu.fragment_task_menu,menu);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            case R.id.new_task:
+                Task task = new Task();
+                TaskStorage.getInstance().addTask(task);
+                Intent intent = new Intent (getActivity(), MainActivity.class);
+                intent.putExtra(TaskListFragment.KEY_EXTRA_TASK_ID, task.getId());
+                startActivity(intent);
+                return true;
+            case R.id.show_subtitle:
+                updateSubtitle();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void updateSubtitle() {
+        TaskStorage taskStorage  = TaskStorage.getInstance();
+        List<Task> tasks = taskStorage.getTasks();
+        int todoTaskCount = 0;
+        for (Task task: tasks){
+            if(!task.isDone()){
+                todoTaskCount++;
+            }
+        }
+        String subtitle = getString(R.string.subtitle_format, todoTaskCount);
+        AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
+        appCompatActivity.getSupportActionBar().setSubtitle(subtitle);
+    }
+
+
     private class TaskHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private Task task;
         private TextView nameTextView;
         private TextView dateTextView;
-
+        private ImageView iconImageView;
         public TaskHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_task, parent, false));
             itemView.setOnClickListener(this);
 
             nameTextView = itemView.findViewById(R.id.task_item_name);
             dateTextView = itemView.findViewById(R.id.task_item_date);
+            iconImageView = itemView.findViewById(R.id.imageView);
 
         }
 
@@ -69,6 +120,13 @@ public class TaskListFragment extends Fragment {
             this.task = task;
             nameTextView.setText(task.getName());
             dateTextView.setText(task.getDate().toString());
+
+            if(task.isDone()){
+                iconImageView.setImageResource(R.drawable.ic_check_box);
+            }
+            else{
+                iconImageView.setImageResource(R.drawable.ic_check_box2);
+            }
 
         }
 

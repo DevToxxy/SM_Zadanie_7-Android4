@@ -36,4 +36,7 @@ public class TaskStorage {
         }
         return foundTask;
     }
+    public void addTask(Task task){
+        tasks.add(task);
+    }
 }
