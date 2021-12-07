@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="TextFieldsStyle">
+        <item name="android:textColor">@color/darkOrange</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/font_size</item>
+        <item name="android:padding">@dimen/text_field_padding</item>
+        <item name="android:textStyle">bold</item>
 
     </style>
 </resources>

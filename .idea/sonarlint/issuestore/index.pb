@@ -15,3 +15,11 @@ v
 Fapp/src/test/java/pl/edu/pb/sm_zadanie_7_android4/ExampleUnitTest.java,0\5\05e71b85b370016ee84b7d0f32d4d1e69fc21f3a
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+w
+Gapp/src/main/java/pl/edu/pb/sm_zadanie_7_android4/TaskListFragment.java,2\a\2a4543f7db65de54f1601ba9fe04cd78bb87a87e
+r
+Bapp/src/main/java/pl/edu/pb/sm_zadanie_7_android4/TaskStorage.java,9\e\9ead840285196d972beb10bae0ef4d85419590c5
+s
+Capp/src/main/java/pl/edu/pb/sm_zadanie_7_android4/TaskFragment.java,1\3\130e30382909dd874b2713591af07ce5b76ed3ff
+<
+build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
